@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atendimento Médico - HospRAP</title>
+    <link rel="stylesheet" href="atendimento.css">
+</head>
+<body>
+    <div class="container">
+        <div class="nav">
+            <a href="index.html">← Início</a> | <a href="teste.html">Cadastro</a> | <a href="triagem.html">Triagem</a>
+        </div>
+        <h2>👨‍⚕️ Atendimento Médico</h2>
+
+        <!-- Dados do Paciente -->
+        <div class="card" id="cardPaciente">
+            <h3>📋 Dados do Paciente</h3>
+            <p><strong>Nome:</strong> <span id="pNome">-</span> &nbsp;|&nbsp; <strong>CPF:</strong> <span id="pCpf">-</span></p>
+            <p><strong>Nascimento:</strong> <span id="pData">-</span> &nbsp;|&nbsp; <strong>Telefone:</strong> <span id="pTel">-</span></p>
+            <p><strong>E-mail:</strong> <span id="pEmail">-</span></p>
+        </div>
+
+        <!-- Dados da Triagem -->
+        <div class="card" id="cardTriagem">
+            <h3>🩺 Dados da Triagem</h3>
+            <p><strong>Queixa Principal:</strong> <span id="tQueixa">-</span></p>
+            <p><strong>PA:</strong> <span id="tPa">-</span> &nbsp;|&nbsp; <strong>FC:</strong> <span id="tFc">-</span> bpm &nbsp;|&nbsp; <strong>Temp:</strong> <span id="tTemp">-</span> °C &nbsp;|&nbsp; <strong>SpO₂:</strong> <span id="tSpo2">-</span>%</p>
+            <p><strong>Peso:</strong> <span id="tPeso">-</span> kg &nbsp;|&nbsp; <strong>Altura:</strong> <span id="tAltura">-</span> m &nbsp;|&nbsp; <strong>Dor:</strong> <span id="tDor">-</span>/10</p>
+            <p><strong>Classificação de Risco:</strong> <span id="tRisco">-</span></p>
+            <p><strong>Alergias / Obs:</strong> <span id="tObs">-</span></p>
+        </div>
+
+        <form id="formAtendimento" onsubmit="finalizarAtendimento(event)">
+            <div class="secao">
+                <h3>🔍 Anamnese & Exame Físico</h3>
+                <label>História da Doença Atual</label>
+                <textarea id="anamnese" placeholder="Descreva a história clínica do paciente..." required></textarea>
+
+                <label>Exame Físico</label>
+                <textarea id="exameFisico" placeholder="Achados do exame físico..." required></textarea>
+            </div>
+
+            <div class="secao">
+                <h3>📝 Diagnóstico</h3>
+                <label>Hipóteses Diagnósticas</label>
+                <textarea id="hipoteses" placeholder="Liste as hipóteses diagnósticas..." required></textarea>
+
+                <label>Diagnóstico Final</label>
+                <input type="text" id="diagnostico" placeholder="Diagnóstico confirmado" required>
+            </div>
+
+            <div class="secao">
+                <h3>💊 Prescrição & Conduta</h3>
+                <label>Prescrição / Receituário</label>
+                <textarea id="prescricao" placeholder="Medicamentos, posologia, duração..." required></textarea>
+
+                <label>Solicitação de Exames</label>
+                <div id="listaExames"></div>
+                <button type="button" onclick="adicionarExame()">+ Adicionar Exame</button>
+            </div>
+
+            <div class="secao">
+                <h3>📄 Outros Documentos</h3>
+                <div class="row">
+                    <div class="field">
+                        <label>Atestado Médico (dias)</label>
+                        <input type="number" id="atestado" placeholder="0" min="0">
+                    </div>
+                    <div class="field">
+                        <label>Encaminhamento</label>
+                        <input type="text" id="encaminhamento" placeholder="Especialidade/Local">
+                    </div>
+                </div>
+
+                <label>Observações Finais</label>
+                <textarea id="obsFinais" placeholder="Observações gerais sobre o atendimento..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-finalizar" id="btnFinalizar">✅ Finalizar Atendimento</button>
+        </form>
+
+        <div id="mensagemSucesso" class="mensagem">
+            ✅ Atendimento finalizado com sucesso!
+        </div>
+    </div>
+
+    <script src="atendimento.js"></script>
+</body>
+</html>
+
